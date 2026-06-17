@@ -5,8 +5,8 @@ pipeline {
     }
 
     environment {
-    HEADLESS = 'true'
-   }
+        HEADLESS = 'true'
+    }
 
     stages {
 
@@ -41,6 +41,27 @@ pipeline {
             }
         }
 
+    }
+
+    post {
+        always {
+            emailext(
+                subject: "Build ${currentBuild.currentResult}: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: """
+Build Status: ${currentBuild.currentResult}
+
+Job Name: ${env.JOB_NAME}
+Build Number: ${env.BUILD_NUMBER}
+
+Console Output:
+${env.BUILD_URL}console
+
+Allure Report:
+${env.BUILD_URL}allure
+""",
+                to: "harsh.qa.moweb@gmail.com"
+            )
+        }
     }
 
 }
