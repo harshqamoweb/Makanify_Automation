@@ -1,10 +1,14 @@
 pipeline {
 
-    agent {
-        label 'windows'
-    }
+    agent any
 
     stages {
+
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/harshqamoweb/Makanify_Automation.git'
+            }
+        }
 
         stage('Install Dependencies') {
             steps {
@@ -22,6 +26,7 @@ pipeline {
         stage('Allure Report') {
             steps {
                 allure includeProperties: false,
+                       jdk: '',
                        results: [[path: 'allure-results']]
             }
         }
