@@ -8,14 +8,14 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'pip install -r requirements.txt'
-                bat 'playwright install'
+                bat '.venv\\Scripts\\python.exe -m pip install -r requirements.txt'
+                bat '.venv\\Scripts\\python.exe -m playwright install'
             }
         }
 
         stage('Run Tests') {
             steps {
-                bat 'pytest --alluredir=allure-results'
+                bat '.venv\\Scripts\\python.exe -m pytest --alluredir=allure-results'
             }
         }
 
@@ -27,5 +27,6 @@ pipeline {
                 )
             }
         }
+
     }
 }
