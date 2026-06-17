@@ -12,11 +12,9 @@ pipeline {
             }
         }
 
-
-    stages {
-
         stage('Install Dependencies') {
             steps {
+                bat '.venv\\Scripts\\python.exe -m pip install --upgrade pip'
                 bat '.venv\\Scripts\\python.exe -m pip install -r requirements.txt'
                 bat '.venv\\Scripts\\python.exe -m playwright install'
             }
@@ -38,4 +36,5 @@ pipeline {
         }
 
     }
+
 }
