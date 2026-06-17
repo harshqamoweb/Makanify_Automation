@@ -26,7 +26,9 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                bat '.venv\\Scripts\\python.exe -m pytest --alluredir=allure-results'
+                catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                    bat '.venv\\Scripts\\python.exe -m pytest --alluredir=allure-results'
+                }
             }
         }
 
