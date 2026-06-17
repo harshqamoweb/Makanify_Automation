@@ -4,6 +4,10 @@ pipeline {
         label 'windows'
     }
 
+    environment {
+    HEADLESS = 'true'
+   }
+
     stages {
 
         stage('Create Virtual Environment') {
