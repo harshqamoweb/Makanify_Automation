@@ -7,7 +7,7 @@ import time
 def test_addContact(page):
     loginPage = LoginPage(page)
     loginPage.navigateToWebsite()
-    loginPage.login("sales@moweb.com", "Test@321")
+    loginPage.login("testadminbroker@yopmail.com", "Test@123$")
     # time.sleep(10)
     dashboardPage = DashboardPage(page)
     dashboardPage.verify_successful_login()
