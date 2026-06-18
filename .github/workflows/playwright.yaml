@@ -2,23 +2,27 @@ name: Playwright Tests
 
 on:
   workflow_dispatch:
+
   push:
     branches:
       - main
-    schedule:
-      - cron: '30 7 * * *'
+
+  schedule:
+    - cron: '30 7 * * *'   # 1 PM IST
 
 permissions:
   contents: write
 
 jobs:
   test:
+
     runs-on: ubuntu-latest
 
     env:
       HEADLESS: true
 
     steps:
+
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -47,9 +51,20 @@ jobs:
           allure_results: allure-results
           allure_report: allure-report
 
-      - name: Deploy Allure Report to GitHub Pages
+      - name: Deploy Historical Report
         if: always()
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./allure-report
+          destination_dir: build-${{ github.run_number }}
+          keep_files: true
+
+      - name: Deploy Latest Report
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
+          destination_dir: latest
+          keep_files: true
