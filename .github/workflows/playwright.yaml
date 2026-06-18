@@ -21,7 +21,6 @@ jobs:
       HEADLESS: true
 
     steps:
-
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -36,7 +35,8 @@ jobs:
           pip install -r requirements.txt
 
       - name: Install Playwright Browsers
-        run: playwright install --with-deps
+        run: |
+          playwright install --with-deps
 
       - name: Clean old allure results
         run: rm -rf allure-results
@@ -45,7 +45,6 @@ jobs:
         run: |
           pytest --alluredir=allure-results
 
-      # Download gh-pages branch
       - name: Get Allure History
         if: always()
         continue-on-error: true
@@ -54,7 +53,6 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      # Generate report
       - name: Generate Allure Report
         if: always()
         uses: simple-elf/allure-report-action@master
@@ -63,22 +61,6 @@ jobs:
           allure_results: allure-results
           allure_history: allure-history
 
-      # Save current report as build number
-      - name: Create Build Folder
-        if: always()
-        run: |
-          mkdir -p allure-history/build-${{ github.run_number }}
-          cp -r allure-history/* allure-history/build-${{ github.run_number }}/
-
-      # Create latest folder
-      - name: Create Latest Folder
-        if: always()
-        run: |
-          rm -rf allure-history/latest
-          mkdir allure-history/latest
-          cp -r allure-report/* allure-history/latest/
-
-      # Publish
       - name: Deploy to GitHub Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v3
