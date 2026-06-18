@@ -106,6 +106,7 @@ class PropertiesPage(BasePage):
         self.click(self.btn_submit)
         self.verify_visible(self.input_searchProperty)
         self.fill(self.input_searchProperty,generatedTitle)
+        self.page.wait_for_load_state("networkidle")
         # self.page.pause()
         # print(f"Generated Title: {generatedTitle}")
         expect(self.page.locator(f"//a/div/div[contains(text(),'{generatedTitle}')]")).to_be_visible(timeout=10000)
