@@ -29,7 +29,7 @@ class BasePage:
     def fill(self, locator, text):
         self.page.locator(locator).fill(str(text))
 
-    def waitForElementToBeVisible(self, locator,timeout=10000):
+    def waitForElementToBeVisible(self, locator,timeout=15000):
         expect(self.page.locator(locator)).to_be_visible(timeout=timeout)
 
     def waitForElementToBeEnabled(self, locator,timeout=15000):
@@ -96,6 +96,16 @@ class BasePage:
         option = self.page.get_by_role("option", name=value)
         option.wait_for()
         option.click()
+
+    def verify_selected_value(self, locator, expected_value, timeout=10000):
+        element = self.page.locator(locator)
+        expect(element).to_be_visible(timeout=timeout)
+
+        actual_value = element.inner_text().strip()
+
+        assert actual_value == expected_value, (
+            f"Expected '{expected_value}', but found '{actual_value}'"
+        )
 
     def get_dropdown_selected_value(self, locator):
         return self.page.locator(locator).inner_text().strip()

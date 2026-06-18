@@ -13,4 +13,4 @@ def test_complete_task(page):
     leadsPage = LeadsPage(page)
     fetched_contact_name = leadsPage.add_lead_and_add_activities()
     taskPage = TasksPage(page)
-    taskPage.complete_task(fetched_contact_name["full_name"])
+    taskPage.complete_task(fetched_contact_name["customer_full_name"])
