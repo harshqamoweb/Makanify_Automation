@@ -2,9 +2,10 @@ from pages.CustomerPage import CustomerPage
 from pages.LeadsPage import LeadsPage
 from pages.LoginPage import LoginPage
 from pages.DashboardPage import DashboardPage
-import time
+import time, pytest
 
 
+@pytest.mark.order(4)
 def test_add_lead(page):
     loginPage = LoginPage(page)
     loginPage.navigateToWebsite()
@@ -15,6 +16,7 @@ def test_add_lead(page):
     leadsPage = LeadsPage(page)
     leadsPage.add_lead()
 
+@pytest.mark.order(5)
 def test_add_lead_and_add_activities(page):
     loginPage = LoginPage(page)
     loginPage.navigateToWebsite()
@@ -24,6 +26,7 @@ def test_add_lead_and_add_activities(page):
     leadsPage = LeadsPage(page)
     leadsPage.add_lead_and_add_activities()
 
+@pytest.mark.order(7)
 def test_sell_or_rent_property(page):
     loginPage = LoginPage(page)
     loginPage.navigateToWebsite()

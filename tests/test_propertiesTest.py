@@ -4,6 +4,7 @@ from pages.PropertiesPage import PropertiesPage
 import time, pytest
 
 # @pytest.mark.parametrize("i", range(10))
+@pytest.mark.order(2)
 def test_addProperty(page):
     loginPage = LoginPage(page)
     loginPage.navigateToWebsite()

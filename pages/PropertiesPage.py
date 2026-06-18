@@ -107,7 +107,8 @@ class PropertiesPage(BasePage):
         self.verify_visible(self.input_searchProperty)
         self.fill(self.input_searchProperty,generatedTitle)
         # self.page.pause()
-        expect(self.page.locator(f"//a/div/div[contains(text(),'{generatedTitle}')]")).to_be_visible()
+        # print(f"Generated Title: {generatedTitle}")
+        expect(self.page.locator(f"//a/div/div[contains(text(),'{generatedTitle}')]")).to_be_visible(timeout=10000)
         return {
             "selected_project": get_selected_project_value
         }

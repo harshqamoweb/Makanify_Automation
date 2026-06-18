@@ -1,9 +1,10 @@
 from pages.LoginPage import LoginPage
 from pages.DashboardPage import DashboardPage
 from pages.ContactPage import ContactPage
-import time
+import time, pytest
 
 
+@pytest.mark.order(3)
 def test_addContact(page):
     loginPage = LoginPage(page)
     loginPage.navigateToWebsite()

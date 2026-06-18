@@ -2,8 +2,10 @@ from pages.LeadsPage import LeadsPage
 from pages.TasksPage import TasksPage
 from pages.DashboardPage import DashboardPage
 from pages.LoginPage import LoginPage
+import pytest
 
 
+@pytest.mark.order(6)
 def test_complete_task(page):
     loginPage = LoginPage(page)
     loginPage.navigateToWebsite()

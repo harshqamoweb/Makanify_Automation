@@ -5,6 +5,7 @@ from pages.DashboardPage import DashboardPage
 from pages.LoginPage import LoginPage
 
 # @pytest.mark.smoke
+@pytest.mark.order(1)
 def test_positive_login_test(page):
     loginPage = LoginPage(page)
     loginPage.navigateToWebsite()
