@@ -6,16 +6,17 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   test:
-
     runs-on: ubuntu-latest
 
     env:
       HEADLESS: true
 
     steps:
-
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -37,9 +38,16 @@ jobs:
         run: |
           python -m pytest --alluredir=allure-results
 
-      - name: Upload Allure Results
+      - name: Generate Allure Report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: simple-elf/allure-report-action@master
         with:
-          name: allure-results
-          path: allure-results
+          allure_results: allure-results
+          allure_report: allure-report
+
+      - name: Deploy Allure Report to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
