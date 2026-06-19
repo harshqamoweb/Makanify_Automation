@@ -131,7 +131,7 @@ class BasePage:
 
         dropdown.click()
 
-        self.page.wait_for_timeout(1000)
+        self.page.wait_for_timeout(3000)
 
         options = self.page.locator(options_locator)
 
@@ -161,7 +161,7 @@ class BasePage:
 
         selected_option.click()
 
-        self.page.wait_for_timeout(500)
+        self.page.wait_for_timeout(1000)
 
         return selected_text
 

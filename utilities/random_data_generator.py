@@ -36,17 +36,7 @@ class RandomDataGenerator:
 
     @staticmethod
     def random_property_title():
-        prefixes = [
-            "Royal", "Green", "Skyline", "Sunrise", "Silver",
-            "Golden", "Elite", "Prime", "Grand", "Harmony"
-        ]
-
-        property_types = [
-            "Residency", "Heights", "Villa", "Apartments",
-            "Homes", "Estate", "Residences", "Park", "Enclave", "Tower"
-        ]
-
-        return f"{random.choice(prefixes)} {random.choice(property_types)}"
+        return f"{fake.unique.color_name()} {fake.unique.street_name()} {fake.word().title()}"
 
     @staticmethod
     def random_property_description():

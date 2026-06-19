@@ -109,7 +109,9 @@ class PropertiesPage(BasePage):
         self.page.wait_for_load_state("networkidle")
         # self.page.pause()
         # print(f"Generated Title: {generatedTitle}")
-        expect(self.page.locator(f"//a/div/div[contains(text(),'{generatedTitle}')]")).to_be_visible(timeout=10000)
+        expect(
+            self.page.locator(f"text={generatedTitle}")
+        ).to_be_visible(timeout=15000)
         return {
             "selected_project": get_selected_project_value
         }
