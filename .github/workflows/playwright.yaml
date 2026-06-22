@@ -8,7 +8,7 @@ on:
       - main
 
   schedule:
-    - cron: '30 7 * * *'
+    - cron: '30 19 * * *'
 
 permissions:
   contents: write
@@ -48,7 +48,7 @@ jobs:
                  --cov-report=xml
 
       - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v5
+        uses: SonarSource/sonarqube-scan-action@v6
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
