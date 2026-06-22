@@ -12,4 +12,3 @@ def page(playwright:Playwright):
     yield page
     context.close()
     browser.close()
-    # slow_mo = 1000
