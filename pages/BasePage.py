@@ -15,7 +15,7 @@ class BasePage:
     def click(self, locator):
         element = self.page.locator(locator)
         element.wait_for(state="visible")
-        element.click()
+        element.click(timeout=10000)
 
     def dblClick(self,locator):
         self.page.locator(locator).dblclick()
