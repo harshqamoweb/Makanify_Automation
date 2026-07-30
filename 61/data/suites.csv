@@ -1,0 +1,8 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","44099","test_addProperty","tests","2026-07-30","passed","2026-07-30","","test_propertiesTest","",""
+"","66024","test_complete_task","tests","2026-07-30","broken","2026-07-30","","test_tasksTest","",""
+"","78654","test_sell_or_rent_property","tests","2026-07-30","passed","2026-07-30","","test_leadsTest","",""
+"","75407","test_add_lead","tests","2026-07-30","passed","2026-07-30","","test_leadsTest","",""
+"","46590","test_add_lead_and_add_activities","tests","2026-07-30","passed","2026-07-30","","test_leadsTest","",""
+"","19526","test_addContact","tests","2026-07-30","passed","2026-07-30","","test_contactTest","",""
+"","5242","test_positive_login_test","tests","2026-07-30","passed","2026-07-30","","test_loginTest","",""
